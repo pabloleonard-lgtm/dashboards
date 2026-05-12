@@ -6,134 +6,146 @@
 <title>Dashboard de Implementación</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #F5F4F0;
-    --surface: #FFFFFF;
-    --surface2: #F0EFE9;
-    --border: #E2E0D8;
-    --border-strong: #C8C5BA;
-    --text: #1A1916;
-    --text-muted: #6B6860;
-    --text-faint: #A09D96;
-    --green: #1D9E75; --green-bg: #E1F5EE; --green-text: #085041;
-    --amber: #D4890A; --amber-bg: #FEF3DC; --amber-text: #7A4F00;
-    --blue: #2B7FD4;  --blue-bg:  #E8F2FC; --blue-text:  #0D4880;
-    --gray-bg: #EEEDE8; --gray-text: #5A5851;
-    --red: #C0392B;
-    --radius: 8px; --radius-lg: 12px;
-    --shadow: 0 1px 3px rgba(0,0,0,.06);
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); font-size: 14px; min-height: 100vh; }
+:root {
+  --bg:#F5F4F0; --surface:#FFFFFF; --surface2:#F0EFE9;
+  --border:#E2E0D8; --border-strong:#C8C5BA;
+  --text:#1A1916; --text-muted:#6B6860; --text-faint:#A09D96;
+  --green:#1D9E75; --green-bg:#E1F5EE; --green-text:#085041;
+  --amber:#D4890A; --amber-bg:#FEF3DC; --amber-text:#7A4F00;
+  --blue:#2B7FD4;  --blue-bg:#E8F2FC;  --blue-text:#0D4880;
+  --gray-bg:#EEEDE8; --gray-text:#5A5851;
+  --red:#C0392B; --radius:8px; --radius-lg:12px;
+  --shadow:0 1px 3px rgba(0,0,0,.06);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:14px;min-height:100vh}
 
-  .topbar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 32px; height: 56px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
-  .topbar-title { font-size: 15px; font-weight: 600; letter-spacing: -.01em; }
-  .topbar-right { display: flex; align-items: center; gap: 12px; }
-  .last-update { font-size: 12px; color: var(--text-faint); font-family: 'DM Mono', monospace; }
-  .btn-refresh { background: none; border: 1px solid var(--border-strong); border-radius: var(--radius); padding: 6px 14px; font-size: 12px; font-family: 'Inter', sans-serif; color: var(--text-muted); cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all .15s; }
-  .btn-refresh:hover { background: var(--surface2); color: var(--text); }
-  .btn-refresh svg { width: 13px; height: 13px; }
+.topbar{background:var(--surface);border-bottom:1px solid var(--border);padding:0 32px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.topbar-title{font-size:15px;font-weight:600;letter-spacing:-.01em}
+.topbar-right{display:flex;align-items:center;gap:12px}
+.last-update{font-size:12px;color:var(--text-faint);font-family:'DM Mono',monospace}
+.btn-refresh{background:none;border:1px solid var(--border-strong);border-radius:var(--radius);padding:6px 14px;font-size:12px;font-family:'Inter',sans-serif;color:var(--text-muted);cursor:pointer;display:flex;align-items:center;gap:6px;transition:all .15s}
+.btn-refresh:hover{background:var(--surface2);color:var(--text)}
+.btn-refresh svg{width:13px;height:13px}
 
-  .main { max-width: 1100px; margin: 0 auto; padding: 28px 24px 60px; }
+.main{max-width:1160px;margin:0 auto;padding:28px 24px 60px}
 
-  .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 28px; }
-  .metric { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 18px 20px; }
-  .metric-label { font-size: 11px; font-weight: 500; color: var(--text-faint); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 8px; }
-  .metric-value { font-size: 28px; font-weight: 600; letter-spacing: -.02em; line-height: 1; }
-  .metric-sub { font-size: 12px; color: var(--text-muted); margin-top: 5px; }
-  .metric-bar { height: 3px; background: var(--border); border-radius: 2px; margin-top: 10px; overflow: hidden; }
-  .metric-bar-fill { height: 100%; border-radius: 2px; background: var(--green); transition: width .6s ease; }
+.metrics{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:28px}
+.metric{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px 18px}
+.metric.accent{border-color:#B5D4F4}
+.metric-label{font-size:11px;font-weight:500;color:var(--text-faint);text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}
+.metric.accent .metric-label{color:var(--blue-text)}
+.metric-value{font-size:26px;font-weight:600;letter-spacing:-.02em;line-height:1}
+.metric.accent .metric-value{color:var(--blue)}
+.metric-sub{font-size:12px;color:var(--text-muted);margin-top:4px}
+.metric-bar{height:3px;background:var(--border);border-radius:2px;margin-top:10px;overflow:hidden}
+.metric-bar-fill{height:100%;border-radius:2px;transition:width .6s ease}
 
-  .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
-  .section-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .07em; color: var(--text-muted); }
-  .section-hint { font-size: 12px; color: var(--text-faint); }
+.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.section-label{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted)}
+.section-hint{font-size:12px;color:var(--text-faint)}
+.divider{height:1px;background:var(--border);margin:28px 0}
 
-  .divider { height: 1px; background: var(--border); margin: 28px 0; }
+.tbl-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow)}
+table{width:100%;border-collapse:collapse;table-layout:fixed}
+thead th{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--text-faint);padding:11px 8px;text-align:left;background:var(--surface2);border-bottom:1px solid var(--border);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+thead th.c{text-align:center}
+tbody tr.dr{cursor:pointer;border-bottom:1px solid var(--border);transition:background .1s}
+tbody tr.dr:hover td{background:#FAFAF8}
+tbody tr.dr.active td{background:#F4FAF7}
+tbody td{padding:0;border-bottom:1px solid var(--border);vertical-align:middle}
+tbody tr.xr td{padding:0;border-bottom:1px solid var(--border)}
 
-  /* TABLE */
-  .tbl-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow); }
-  table { width: 100%; border-collapse: collapse; table-layout: fixed; }
-  thead th { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--text-faint); padding: 12px 10px; text-align: left; background: var(--surface2); border-bottom: 1px solid var(--border); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  thead th.center { text-align: center; }
-  tbody tr.data-row { cursor: pointer; border-bottom: 1px solid var(--border); transition: background .1s; }
-  tbody tr.data-row:last-child { border-bottom: none; }
-  tbody tr.data-row:hover td { background: #FAFAF8; }
-  tbody tr.data-row.active td { background: #F5F9F7; }
-  tbody td { padding: 0; border-bottom: 1px solid var(--border); vertical-align: middle; }
-  tbody tr.detail-row td { padding: 0; border-bottom: 1px solid var(--border); }
+.cc{padding:10px 8px;display:flex;align-items:center;gap:8px}
+.chev{font-size:10px;color:var(--text-faint);transition:transform .2s;flex-shrink:0}
+.chev.open{transform:rotate(90deg)}
+.cn{font-size:13px;font-weight:500}.cm{font-size:11px;color:var(--text-faint);margin-top:1px}
+.cp{padding:10px 8px;text-align:right;font-family:'DM Mono',monospace;font-size:13px;font-weight:500}
+.cb{padding:7px 4px;text-align:center}
+.badge{display:inline-flex;align-items:center;justify-content:center;border-radius:5px;font-size:10px;font-weight:600;padding:2px 7px;white-space:nowrap;letter-spacing:.01em}
+.b-done{background:var(--green-bg);color:var(--green-text)}
+.b-pend{background:var(--gray-bg);color:var(--gray-text)}
+.b-warn{background:var(--amber-bg);color:var(--amber-text)}
+.b-info{background:var(--blue-bg);color:var(--blue-text)}
+.b-none{background:var(--surface2);color:var(--text-faint)}
+.ci{padding:6px 6px}
+.segs{display:flex;gap:3px}
+.seg{flex:1;height:5px;border-radius:3px;background:var(--border);overflow:hidden}
+.segf{height:100%;border-radius:3px}
+.ipct{text-align:center;font-size:10px;font-family:'DM Mono',monospace;margin-top:2px}
+.ccap{padding:7px 4px;text-align:center}
+.cfrac{font-size:12px;font-weight:600;font-family:'DM Mono',monospace}
+.cbar{height:3px;background:var(--border);border-radius:3px;overflow:hidden;margin:3px 6px 0}
+.cbarf{height:100%;border-radius:3px}
+.cadh{padding:7px 4px;text-align:center}
+.adhpct{font-size:12px;font-weight:600;font-family:'DM Mono',monospace;color:var(--blue)}
+.adhfrac{font-size:10px;color:var(--text-faint);margin-top:1px}
+.adhbar{height:3px;background:var(--border);border-radius:3px;overflow:hidden;margin:3px 6px 0}
+.adhbarf{height:100%;border-radius:3px;background:var(--blue)}
 
-  .cell-client { padding: 11px 10px; display: flex; align-items: center; gap: 8px; }
-  .chevron { font-size: 10px; color: var(--text-faint); transition: transform .2s; flex-shrink: 0; }
-  .chevron.open { transform: rotate(90deg); }
-  .client-name { font-size: 13px; font-weight: 500; }
-  .client-meta { font-size: 11px; color: var(--text-faint); margin-top: 1px; }
+.detail-panel{padding:20px 24px 22px;background:#F4FAF7;border-left:3px solid var(--green)}
+.detail-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px}
+.detail-name{font-size:15px;font-weight:600}.detail-meta{font-size:12px;color:var(--text-muted);margin-top:3px}
+.steps{display:flex;flex-direction:column}
+.si{display:grid;grid-template-columns:22px 1fr auto;gap:10px;align-items:start;padding:9px 0;border-bottom:1px solid var(--border)}
+.si:last-child{border-bottom:none}
+.sicon{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;flex-shrink:0;margin-top:1px}
+.id{background:var(--green-bg);color:var(--green-text)}
+.ip{background:var(--amber-bg);color:var(--amber-text)}
+.ii{background:var(--blue-bg);color:var(--blue-text)}
+.ix{background:var(--gray-bg);color:var(--gray-text)}
+.sn{font-size:13px;font-weight:500}.ss{font-size:11px;color:var(--text-muted);margin-top:2px}
+.sv{font-size:12px;font-weight:600;text-align:right;padding-top:1px}
+.svd{color:var(--green-text)}.svp{color:var(--amber-text)}.svi{color:var(--blue-text)}.svx{color:var(--text-faint)}
+.subb{grid-column:2/4;display:flex;flex-direction:column;gap:6px;padding:4px 0 2px}
+.subr{display:flex;align-items:center;gap:10px}
+.subn{font-size:11px;color:var(--text-muted);width:170px;flex-shrink:0}
+.subt{flex:1;height:4px;background:var(--border);border-radius:3px;overflow:hidden}
+.subf{height:100%;border-radius:3px}
+.subp{font-size:11px;font-weight:500;font-family:'DM Mono',monospace;min-width:32px;text-align:right}
+.adh-block{display:flex;align-items:center;gap:16px;padding:12px 14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius)}
+.adh-big{font-size:22px;font-weight:600;color:var(--blue);font-family:'DM Mono',monospace;flex-shrink:0}
+.adh-big span{font-size:13px;color:var(--text-faint);font-weight:400}
+.adh-info{flex:1}
+.adh-label{font-size:12px;color:var(--text-muted)}
+.adh-pct-big{font-size:13px;font-weight:600;color:var(--blue);text-align:right}
+.adh-bar-big{height:6px;background:var(--border);border-radius:4px;overflow:hidden;margin-top:6px}
+.adh-bar-big-f{height:100%;border-radius:4px;background:var(--blue)}
 
-  .cell-pct { padding: 11px 10px; text-align: right; font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500; }
-  .cell-badge { padding: 8px 6px; text-align: center; }
-  .badge { display: inline-flex; align-items: center; justify-content: center; border-radius: 5px; font-size: 10px; font-weight: 600; padding: 3px 7px; white-space: nowrap; letter-spacing: .01em; }
-  .b-done  { background: var(--green-bg); color: var(--green-text); }
-  .b-pend  { background: var(--gray-bg);  color: var(--gray-text); }
-  .b-warn  { background: var(--amber-bg); color: var(--amber-text); }
-  .b-info  { background: var(--blue-bg);  color: var(--blue-text); }
-  .b-none  { background: var(--surface2); color: var(--text-faint); }
+.cards-toggle{display:flex;align-items:center;gap:8px;background:none;border:none;font-family:'Inter',sans-serif;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);cursor:pointer;padding:0}
+.cards-toggle:hover{color:var(--text)}
+.cards-icon{font-size:13px;color:var(--text-faint);transition:transform .2s;display:inline-block}
+.cards-icon.open{transform:rotate(180deg)}
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px 18px;box-shadow:var(--shadow)}
+.card-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px}
+.card-name{font-size:14px;font-weight:600}.card-meta{font-size:11px;color:var(--text-faint);margin-top:2px}
+.chip{font-size:12px;font-weight:600;padding:3px 11px;border-radius:20px}
+.card-bar{height:5px;background:var(--border);border-radius:3px;overflow:hidden;margin-bottom:12px}
+.card-bar-fill{height:100%;border-radius:3px}
+.card-steps{display:flex;flex-direction:column;gap:5px}
+.csr{display:flex;align-items:center;gap:7px;font-size:11px}
+.csdot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.csname{color:var(--text-muted);flex:1}
+.csval{font-weight:600;color:var(--text)}
+.cs-mbar{flex:1;height:3px;background:var(--border);border-radius:2px;overflow:hidden}
+.cs-mbar-f{height:100%;border-radius:2px}
+.card-adh{margin-top:10px;padding-top:10px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.card-adh-label{font-size:11px;color:var(--text-faint)}
+.card-adh-val{font-size:12px;font-weight:600;color:var(--blue);font-family:'DM Mono',monospace}
 
-  .cell-inst { padding: 6px 8px; }
-  .segs { display: flex; gap: 3px; }
-  .seg { flex: 1; height: 5px; border-radius: 3px; background: var(--border); overflow: hidden; }
-  .seg-fill { height: 100%; border-radius: 3px; }
-  .inst-pct { text-align: center; font-size: 10px; font-family: 'DM Mono', monospace; margin-top: 3px; }
+.legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px;padding-top:12px;border-top:1px solid var(--border)}
+.leg{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text-faint)}
+.leg-dot{width:7px;height:7px;border-radius:50%}
+.leg-note{margin-left:auto;font-size:11px;color:var(--text-faint);font-style:italic}
 
-  .cell-cap { padding: 8px 6px; text-align: center; }
-  .cap-frac { font-size: 12px; font-weight: 600; font-family: 'DM Mono', monospace; }
-  .cap-bar { height: 3px; background: var(--border); border-radius: 3px; overflow: hidden; margin: 4px 8px 0; }
-  .cap-fill { height: 100%; border-radius: 3px; }
+.state-box{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 20px;gap:12px;color:var(--text-muted)}
+.spinner{width:28px;height:28px;border:2.5px solid var(--border);border-top-color:var(--green);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.error-msg{font-size:13px;color:var(--red);text-align:center}
 
-  /* DETAIL PANEL */
-  .detail-panel { padding: 20px 24px 22px; background: #F8F8F5; border-left: 3px solid var(--green); }
-  .detail-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 16px; }
-  .detail-name { font-size: 15px; font-weight: 600; }
-  .detail-meta { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
-  .chip { font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 20px; }
-
-  .steps { display: flex; flex-direction: column; gap: 0; }
-  .step-item { display: grid; grid-template-columns: 22px 1fr auto; gap: 10px; align-items: start; padding: 10px 0; border-bottom: 1px solid var(--border); }
-  .step-item:last-child { border-bottom: none; }
-  .step-icon { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
-  .si-done    { background: var(--green-bg); color: var(--green-text); }
-  .si-partial { background: var(--amber-bg); color: var(--amber-text); }
-  .si-info    { background: var(--blue-bg);  color: var(--blue-text); }
-  .si-pend    { background: var(--gray-bg);  color: var(--gray-text); border: 1px solid var(--border); }
-  .step-name { font-size: 13px; font-weight: 500; }
-  .step-sub  { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
-  .step-val  { font-size: 12px; font-weight: 600; text-align: right; padding-top: 1px; }
-  .sv-done { color: var(--green-text); }
-  .sv-partial { color: var(--amber-text); }
-  .sv-info { color: var(--blue-text); }
-  .sv-pend { color: var(--text-faint); }
-
-  .sub-bars { grid-column: 2/4; display: flex; flex-direction: column; gap: 6px; padding: 4px 0 2px; }
-  .sub-row { display: flex; align-items: center; gap: 10px; }
-  .sub-name { font-size: 11px; color: var(--text-muted); width: 160px; flex-shrink: 0; }
-  .sub-track { flex: 1; height: 4px; background: var(--border); border-radius: 3px; overflow: hidden; }
-  .sub-fill { height: 100%; border-radius: 3px; }
-  .sub-pct { font-size: 11px; font-weight: 500; font-family: 'DM Mono', monospace; min-width: 32px; text-align: right; }
-
-  .legend { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border); }
-  .leg { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--text-faint); }
-  .leg-dot { width: 7px; height: 7px; border-radius: 50%; }
-  .leg-note { margin-left: auto; font-size: 11px; color: var(--text-faint); font-style: italic; }
-
-  /* LOADING / ERROR */
-  .state-box { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 20px; gap: 12px; color: var(--text-muted); }
-  .spinner { width: 28px; height: 28px; border: 2.5px solid var(--border); border-top-color: var(--green); border-radius: 50%; animation: spin .8s linear infinite; }
-  @keyframes spin { to { transform: rotate(360deg); } }
-  .error-msg { font-size: 13px; color: var(--red); text-align: center; }
-
-  @media (max-width: 700px) {
-    .metrics { grid-template-columns: repeat(2,1fr); }
-    .main { padding: 16px 12px 40px; }
-    .topbar { padding: 0 16px; }
-  }
+@media(max-width:900px){.metrics{grid-template-columns:repeat(3,1fr)}.cards-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.metrics{grid-template-columns:repeat(2,1fr)}.cards-grid{grid-template-columns:1fr}.main{padding:16px 12px 40px}.topbar{padding:0 16px}}
 </style>
 </head>
 <body>
@@ -152,307 +164,239 @@
 </div>
 
 <div class="main">
-  <div class="metrics" id="metrics">
+
+  <div class="metrics">
     <div class="metric"><div class="metric-label">Clientes activos</div><div class="metric-value" id="m-total">—</div><div class="metric-sub">en implementación</div></div>
-    <div class="metric"><div class="metric-label">Avance promedio</div><div class="metric-value" id="m-avg">—</div><div class="metric-sub">todos los clientes</div><div class="metric-bar"><div class="metric-bar-fill" id="m-avg-bar" style="width:0%"></div></div></div>
+    <div class="metric"><div class="metric-label">Avance promedio</div><div class="metric-value" id="m-avg">—</div><div class="metric-sub">todos los clientes</div><div class="metric-bar"><div class="metric-bar-fill" id="m-avg-bar" style="width:0%;background:var(--green)"></div></div></div>
     <div class="metric"><div class="metric-label">Instalaciones</div><div class="metric-value" id="m-inst">—</div><div class="metric-sub">completadas al 100%</div></div>
-    <div class="metric"><div class="metric-label">Capacitaciones</div><div class="metric-value" id="m-cap">—</div><div class="metric-sub">empresas capacitadas</div></div>
+    <div class="metric"><div class="metric-label">Cap. empresas</div><div class="metric-value" id="m-cap">—</div><div class="metric-sub">empresas capacitadas</div></div>
+    <div class="metric accent"><div class="metric-label">Adherencia empleados</div><div class="metric-value" id="m-adh">—</div><div class="metric-sub" id="m-adh-sub">empleados adheridos</div><div class="metric-bar"><div class="metric-bar-fill" id="m-adh-bar" style="width:0%;background:var(--blue)"></div></div></div>
   </div>
 
   <div class="section-header">
     <span class="section-label">Tabla comparativa</span>
     <span class="section-hint">Clic en una fila para ver el detalle</span>
   </div>
-
-  <div class="tbl-wrap">
-    <div id="tbl-container"><div class="state-box"><div class="spinner"></div><span>Cargando datos...</span></div></div>
-  </div>
-
+  <div class="tbl-wrap"><div id="tbl-container"><div class="state-box"><div class="spinner"></div><span>Cargando datos...</span></div></div></div>
   <div class="legend" id="legend" style="display:none">
     <div class="leg"><div class="leg-dot" style="background:var(--green)"></div>Completado</div>
     <div class="leg"><div class="leg-dot" style="background:var(--amber)"></div>En progreso</div>
     <div class="leg"><div class="leg-dot" style="background:var(--blue)"></div>Inicio / revisión</div>
     <div class="leg"><div class="leg-dot" style="background:var(--border-strong)"></div>Pendiente</div>
+    <div class="leg"><div class="leg-dot" style="background:var(--blue)"></div>Adherencia emp.</div>
     <span class="leg-note">Instalación: 3 barras = cableado · colocación · config.</span>
   </div>
+
+  <div class="divider"></div>
+
+  <div class="section-header">
+    <button class="cards-toggle" onclick="toggleCards()">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="1" width="6" height="6" rx="1"/><rect x="9" y="1" width="6" height="6" rx="1"/><rect x="1" y="9" width="6" height="6" rx="1"/><rect x="9" y="9" width="6" height="6" rx="1"/></svg>
+      Vista por cliente
+      <span class="cards-icon" id="cards-icon">▾</span>
+    </button>
+    <span class="section-hint">Detalle visual por etapa</span>
+  </div>
+  <div id="cards-section" style="display:none"><div class="cards-grid" id="cards-grid"></div></div>
+
 </div>
 
 <script>
 const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRXr3Sc2q-SyrEp3Z4Y6w3ATRoX7cOcztOm-ucZR8AZldzrZgyymOr6gvzxbbIwHg/pub?gid=1472033048&single=true&output=csv";
-
-let openId = null;
-let clients = [];
+let openId = null, clients = [], cardsOpen = false;
 
 function parseCSV(text) {
-  const lines = text.trim().split('\n').map(l => l.split(',').map(c => c.trim().replace(/^"|"$/g, '')));
-  // Skip header rows (row 0 = headers, row 1 = hints)
-  // Data starts at row 2 (index 2)
-  const data = [];
-  for (let i = 2; i < lines.length; i++) {
-    const r = lines[i];
-    if (!r[0] || r[0].trim() === '') continue;
-    const name      = r[0]  || '';
-    const fecha     = r[1]  || '';
-    const totalEmp  = parseInt(r[2])  || 0;
-    const contrato  = r[3]  || '';
-    const brief     = r[4]  || '';
-    const cableado  = parseFloat(r[5])  || 0;
-    const colocacion= parseFloat(r[6])  || 0;
-    const config_pm = parseFloat(r[7])  || 0;
-    const capEdif   = r[8]  || '';
-    const mail      = r[9]  || '';
-    const capN      = parseInt(r[10]) || 0;
-    const instAvg   = Math.round((cableado + colocacion + config_pm) / 3);
-    const capPct    = totalEmp > 0 ? Math.round(capN / totalEmp * 100) : 0;
-
-    // Avance general
-    const scoreContrato = contrato === 'Firmado' ? 100 : contrato === 'En revisión' ? 50 : 0;
-    const scoreBrief    = brief === 'Realizado' ? 100 : 0;
-    const scoreInst     = instAvg;
-    const scoreCapEdif  = capEdif === 'Realizada' ? 100 : capEdif === 'Agendada' ? 50 : 0;
-    const scoreMail     = mail === 'Enviado' ? 100 : 0;
-    const scoreCapEmp   = capPct;
-    const pct = Math.round((scoreContrato + scoreBrief + scoreInst + scoreCapEdif + scoreMail + scoreCapEmp) / 6);
-
-    data.push({ id: i, name, fecha, totalEmp, contrato, brief, cableado, colocacion, config_pm, capEdif, mail, capN, instAvg, capPct, pct });
+  const lines = text.trim().split('\n').map(l => {
+    const cols=[]; let cur='', inQ=false;
+    for(let i=0;i<l.length;i++){
+      if(l[i]==='"'){inQ=!inQ;continue}
+      if(l[i]===','&&!inQ){cols.push(cur.trim());cur='';continue}
+      cur+=l[i];
+    }
+    cols.push(cur.trim()); return cols;
+  });
+  const data=[];
+  for(let i=2;i<lines.length;i++){
+    const r=lines[i];
+    if(!r[0]||!r[0].trim()) continue;
+    const name=r[0]||'', fecha=r[1]||'';
+    const totalEmp=parseInt(r[2])||0, contrato=r[3]||'', brief=r[4]||'';
+    const cableado=parseFloat(r[5])||0, coloc=parseFloat(r[6])||0, config=parseFloat(r[7])||0;
+    const capEdif=r[8]||'', mail=r[9]||'', capN=parseInt(r[10])||0;
+    const empTot=parseInt(r[11])||0, empAdh=parseInt(r[12])||0;
+    const pctRaw=parseFloat((r[13]||'').replace('%',''));
+    const instAvg=Math.round((cableado+coloc+config)/3);
+    const capPct=totalEmp>0?Math.round(capN/totalEmp*100):0;
+    const adhPct=empTot>0?Math.round(empAdh/empTot*100):0;
+    const pct=!isNaN(pctRaw)&&pctRaw>0?Math.round(pctRaw):Math.round((
+      (contrato==='Firmado'?100:contrato==='En revisión'?50:0)+
+      (brief==='Realizado'?100:0)+instAvg+
+      (capEdif==='Realizada'?100:capEdif==='Agendada'?50:0)+
+      (mail==='Enviado'?100:0)+capPct
+    )/6);
+    data.push({id:i,name,fecha,totalEmp,contrato,brief,cableado,coloc,config,capEdif,mail,capN,empTot,empAdh,instAvg,capPct,adhPct,pct});
   }
   return data;
 }
 
-function pctColor(p) {
-  if (p >= 75) return 'var(--green)';
-  if (p >= 30) return 'var(--amber)';
-  if (p >  0)  return 'var(--blue)';
-  return 'var(--border-strong)';
-}
-function pctClass(p) {
-  if (p >= 75) return 'pct-green';
-  if (p >= 30) return 'pct-amber';
-  if (p >  0)  return 'pct-blue';
-  return 'pct-gray';
-}
-function pctColorClass(p) {
-  if (p >= 75) return 'sv-done';
-  if (p >= 30) return 'sv-partial';
-  if (p >  0)  return 'sv-info';
-  return 'sv-pend';
-}
-function chipClass(p) {
-  if (p >= 75) return 'b-done';
-  if (p >= 30) return 'b-warn';
-  if (p >  0)  return 'b-info';
-  return 'b-none';
-}
-function segFill(v, base) {
-  if (v >= 100) return 'var(--green)';
-  if (v > 0)    return base;
-  return 'var(--border)';
-}
-function badgeContrato(v) {
-  if (v === 'Firmado')     return ['b-done', 'Firmado'];
-  if (v === 'En revisión') return ['b-info', 'En revisión'];
-  return ['b-none', '—'];
-}
-function badgeBrief(v) {
-  if (v === 'Realizado') return ['b-done', 'Realizado'];
-  if (v === 'Pendiente') return ['b-pend', 'Pendiente'];
-  return ['b-none', '—'];
-}
-function badgeCapEdif(v) {
-  if (v === 'Realizada')   return ['b-done', 'Realizada'];
-  if (v === 'Agendada')    return ['b-warn', 'Agendada'];
-  if (v === 'Sin agendar') return ['b-pend', 'Sin agendar'];
-  return ['b-none', '—'];
-}
-function badgeMail(v) {
-  if (v === 'Enviado')   return ['b-done', 'Enviado'];
-  if (v === 'Pendiente') return ['b-pend', 'Pendiente'];
-  return ['b-none', '—'];
-}
-function iconForScore(score) {
-  if (score === 100) return ['si-done',    '✓'];
-  if (score > 0)     return ['si-partial', '~'];
-  return ['si-pend', '·'];
+const pctColor=p=>p>=75?'var(--green-text)':p>=30?'var(--amber-text)':p>0?'var(--blue-text)':'var(--text-faint)';
+const pctBarColor=p=>p>=75?'var(--green)':p>=30?'var(--amber)':p>0?'var(--blue)':'var(--border-strong)';
+const chipCls=p=>p>=75?'b-done':p>=30?'b-warn':p>0?'b-info':'b-none';
+const segCol=(v,base)=>v>=100?'var(--green)':v>0?base:'var(--border)';
+const instBase=a=>a>=100?'var(--green)':a>0?'var(--amber)':'var(--blue)';
+const instPctCol=a=>a>=100?'var(--green-text)':a>0?'var(--amber-text)':'var(--blue-text)';
+const bContrato=v=>v==='Firmado'?['b-done','Firmado']:v==='En revisión'?['b-info','En revisión']:['b-none','—'];
+const bBrief=v=>v==='Realizado'?['b-done','Realizado']:v==='Pendiente'?['b-pend','Pendiente']:['b-none','—'];
+const bCapEdif=v=>v==='Realizada'?['b-done','Realizada']:v==='Agendada'?['b-warn','Agendada']:v==='Sin agendar'?['b-pend','Sin agendar']:['b-none','—'];
+const bMail=v=>v==='Enviado'?['b-done','Enviado']:v==='Pendiente'?['b-pend','Pendiente']:['b-none','—'];
+const sIcon=s=>s===100?['id','✓']:s>0?['ip','~']:['ix','·'];
+const sValHtml=(s,lbl)=>s===100?`<span class="svd">${lbl}</span>`:s>0?`<span class="svp">${lbl}</span>`:s===-1?`<span class="svi">${lbl}</span>`:`<span class="svx">${lbl}</span>`;
+
+function renderMetrics(data){
+  if(!data.length) return;
+  document.getElementById('m-total').textContent=data.length;
+  const avg=Math.round(data.reduce((s,c)=>s+c.pct,0)/data.length);
+  document.getElementById('m-avg').textContent=avg+'%';
+  document.getElementById('m-avg-bar').style.width=avg+'%';
+  document.getElementById('m-inst').textContent=`${data.filter(c=>c.instAvg===100).length}/${data.length}`;
+  document.getElementById('m-cap').textContent=`${data.reduce((s,c)=>s+c.capN,0)}/${data.reduce((s,c)=>s+c.totalEmp,0)}`;
+  const adhN=data.reduce((s,c)=>s+c.empAdh,0), adhT=data.reduce((s,c)=>s+c.empTot,0);
+  const adhG=adhT>0?Math.round(adhN/adhT*100):0;
+  document.getElementById('m-adh').textContent=`${adhN}/${adhT}`;
+  document.getElementById('m-adh-sub').textContent=`${adhG}% de empleados adheridos`;
+  document.getElementById('m-adh-bar').style.width=adhG+'%';
 }
 
-function renderMetrics(data) {
-  if (!data.length) return;
-  document.getElementById('m-total').textContent = data.length;
-  const avg = Math.round(data.reduce((s,c) => s + c.pct, 0) / data.length);
-  document.getElementById('m-avg').textContent = avg + '%';
-  document.getElementById('m-avg-bar').style.width = avg + '%';
-  const instDone = data.filter(c => c.instAvg === 100).length;
-  document.getElementById('m-inst').textContent = `${instDone}/${data.length}`;
-  const capN = data.reduce((s,c) => s + c.capN, 0);
-  const capT = data.reduce((s,c) => s + c.totalEmp, 0);
-  document.getElementById('m-cap').textContent = `${capN}/${capT}`;
-}
-
-function renderDetail(c) {
-  const instColor = c.instAvg === 100 ? 'var(--green)' : c.instAvg > 0 ? 'var(--amber)' : 'var(--blue)';
-  const [bcls, blbl] = badgeContrato(c.contrato);
-  const [brcls, brlbl] = badgeBrief(c.brief);
-  const [becls, belbl] = badgeCapEdif(c.capEdif);
-  const [bmcls, bmlbl] = badgeMail(c.mail);
-  const cScore = c.contrato === 'Firmado' ? 100 : c.contrato === 'En revisión' ? 50 : 0;
-  const bScore = c.brief === 'Realizado' ? 100 : 0;
-  const eScore = c.capEdif === 'Realizada' ? 100 : c.capEdif === 'Agendada' ? 50 : 0;
-  const mScore = c.mail === 'Enviado' ? 100 : 0;
-  const [ci, cl] = iconForScore(cScore);
-  const [bi, bl] = iconForScore(bScore);
-  const [ii, il] = iconForScore(c.instAvg);
-  const [ei, el] = iconForScore(eScore);
-  const [mi, ml] = iconForScore(mScore);
-  const [ki, kl] = iconForScore(c.capPct);
-
-  return `<td colspan="8" style="padding:0">
+function renderDetail(c){
+  const ib=instBase(c.instAvg);
+  const [bc,bl]=bContrato(c.contrato),[rc,rl]=bBrief(c.brief),[ec,el]=bCapEdif(c.capEdif),[mc,ml]=bMail(c.mail);
+  const cS=c.contrato==='Firmado'?100:c.contrato==='En revisión'?50:0;
+  const bS=c.brief==='Realizado'?100:0;
+  const eS=c.capEdif==='Realizada'?100:c.capEdif==='Agendada'?50:0;
+  const mS=c.mail==='Enviado'?100:0;
+  const [ci,cl]=sIcon(cS),[bi,bll]=sIcon(bS),[ii,il]=sIcon(c.instAvg);
+  const [ei,ell]=sIcon(eS),[mi,mll]=sIcon(mS),[ki,kl]=sIcon(c.capPct),[ai,al]=sIcon(c.adhPct);
+  return `<td colspan="9" style="padding:0">
   <div class="detail-panel">
     <div class="detail-top">
-      <div>
-        <div class="detail-name">${c.name}</div>
-        <div class="detail-meta">${c.totalEmp} empresas${c.fecha ? ' · inicio ' + c.fecha : ''}</div>
-      </div>
-      <span class="badge chip ${chipClass(c.pct)}">${c.pct}% completado</span>
+      <div><div class="detail-name">${c.name}</div>
+      <div class="detail-meta">${c.totalEmp} empresas${c.empTot?' · '+c.empTot+' empleados':''}${c.fecha?' · inicio '+c.fecha:''}</div></div>
+      <span class="badge chip ${chipCls(c.pct)}" style="font-size:12px;padding:4px 12px;border-radius:20px">${c.pct}% completado</span>
     </div>
     <div class="steps">
-      <div class="step-item">
-        <div class="step-icon ${ci}">${cl}</div>
-        <div><div class="step-name">Firma de contrato</div></div>
-        <div class="step-val ${cScore===100?'sv-done':cScore>0?'sv-info':'sv-pend'}">${blbl}</div>
+      <div class="si"><div class="sicon ${ci}">${cl}</div><div><div class="sn">Firma de contrato</div></div><div class="sv">${sValHtml(cS,bl)}</div></div>
+      <div class="si"><div class="sicon ${bi}">${bll}</div><div><div class="sn">Brief y detalle de requerimiento</div></div><div class="sv">${sValHtml(bS,rl)}</div></div>
+      <div class="si" style="align-items:start">
+        <div class="sicon ${ii}">${il}</div>
+        <div><div class="sn">Instalación física</div><div class="ss">Promedio: ${c.instAvg}%</div></div>
+        <div class="sv" style="color:${instPctCol(c.instAvg)}">${c.instAvg}%</div>
       </div>
-      <div class="step-item">
-        <div class="step-icon ${bi}">${bl}</div>
-        <div><div class="step-name">Brief y detalle de requerimiento</div></div>
-        <div class="step-val ${bScore===100?'sv-done':'sv-pend'}">${brlbl}</div>
+      <div class="subb">
+        ${[['Cableado',c.cableado],['Colocación',c.coloc],['Config. y puesta en marcha',c.config]].map(([n,v])=>`
+        <div class="subr"><span class="subn">${n}</span><div class="subt"><div class="subf" style="width:${v}%;background:${segCol(v,ib)}"></div></div><span class="subp">${v}%</span></div>`).join('')}
       </div>
-      <div class="step-item" style="align-items:start">
-        <div class="step-icon ${ii}">${il}</div>
-        <div><div class="step-name">Instalación física</div><div class="step-sub">Promedio: ${c.instAvg}%</div></div>
-        <div class="step-val ${pctColorClass(c.instAvg)}">${c.instAvg}%</div>
+      <div class="si"><div class="sicon ${ei}">${ell}</div><div><div class="sn">Capacitación admin. de edificios</div></div><div class="sv">${sValHtml(eS,el)}</div></div>
+      <div class="si"><div class="sicon ${mi}">${mll}</div><div><div class="sn">Envío mail inicial a empresas</div></div><div class="sv">${sValHtml(mS,ml)}</div></div>
+      <div class="si" style="align-items:start">
+        <div class="sicon ${ki}">${kl}</div>
+        <div><div class="sn">Capacitación admin. de empresas</div><div class="ss">${c.capN} de ${c.totalEmp} empresas capacitadas</div></div>
+        <div class="sv" style="color:${c.capPct===100?'var(--green-text)':c.capPct>0?'var(--amber-text)':'var(--text-faint)'}">${c.capN}/${c.totalEmp}</div>
       </div>
-      <div class="sub-bars" style="grid-column:2/4">
-        ${[['Cableado', c.cableado], ['Colocación', c.colocacion], ['Config. y puesta en marcha', c.config_pm]].map(([n,v]) => `
-        <div class="sub-row">
-          <span class="sub-name">${n}</span>
-          <div class="sub-track"><div class="sub-fill" style="width:${v}%;background:${segFill(v, instColor)}"></div></div>
-          <span class="sub-pct">${v}%</span>
-        </div>`).join('')}
+      <div class="subb"><div class="subr"><div class="subt" style="height:5px"><div class="subf" style="width:${c.capPct}%;background:${c.capPct===100?'var(--green)':'var(--amber)'}"></div></div><span class="subp">${c.capPct}%</span></div></div>
+      <div class="si" style="align-items:start">
+        <div class="sicon ${ai}">${al}</div>
+        <div><div class="sn">Adherencia de empleados</div><div class="ss">${c.empAdh} de ${c.empTot} empleados adheridos</div></div>
+        <div class="sv svi">${c.adhPct}%</div>
       </div>
-      <div class="step-item">
-        <div class="step-icon ${ei}">${el}</div>
-        <div><div class="step-name">Capacitación admin. de edificios</div></div>
-        <div class="step-val ${eScore===100?'sv-done':eScore>0?'sv-partial':'sv-pend'}">${belbl}</div>
-      </div>
-      <div class="step-item">
-        <div class="step-icon ${mi}">${ml}</div>
-        <div><div class="step-name">Envío mail inicial a empresas</div></div>
-        <div class="step-val ${mScore===100?'sv-done':'sv-pend'}">${bmlbl}</div>
-      </div>
-      <div class="step-item" style="align-items:start">
-        <div class="step-icon ${ki}">${kl}</div>
-        <div><div class="step-name">Capacitación admin. de empresas</div><div class="step-sub">${c.capN} de ${c.totalEmp} empresas capacitadas</div></div>
-        <div class="step-val ${pctColorClass(c.capPct)}">${c.capN}/${c.totalEmp}</div>
-      </div>
-      <div class="sub-bars" style="grid-column:2/4;padding-bottom:4px">
-        <div class="sub-row">
-          <div class="sub-track" style="height:5px"><div class="sub-fill" style="width:${c.capPct}%;background:${c.capPct===100?'var(--green)':'var(--amber)'}"></div></div>
-          <span class="sub-pct">${c.capPct}%</span>
+      <div class="subb" style="padding-bottom:4px">
+        <div class="adh-block">
+          <div><div class="adh-big">${c.empAdh}<span>/${c.empTot}</span></div><div class="adh-label" style="margin-top:2px">empleados adheridos</div></div>
+          <div class="adh-info"><div class="adh-pct-big">${c.adhPct}%</div><div class="adh-bar-big"><div class="adh-bar-big-f" style="width:${c.adhPct}%"></div></div></div>
         </div>
       </div>
     </div>
-  </div>
-  </td>`;
+  </div></td>`;
 }
 
-function renderTable(data) {
-  if (!data.length) {
-    document.getElementById('tbl-container').innerHTML = '<div class="state-box"><span>No hay clientes cargados en el sheet todavía.</span></div>';
-    return;
-  }
-  const tbody = document.createElement('tbody');
-  tbody.id = 'tbl-body';
-
-  data.forEach(c => {
-    const isOpen = openId === c.id;
-    const instColor = c.instAvg === 100 ? 'var(--green)' : c.instAvg > 0 ? 'var(--amber)' : 'var(--blue)';
-    const instPctColor = c.instAvg === 100 ? 'var(--green-text)' : c.instAvg > 0 ? 'var(--amber-text)' : 'var(--blue-text)';
-    const [bcls, blbl] = badgeContrato(c.contrato);
-    const [brcls, brlbl] = badgeBrief(c.brief);
-    const [becls, belbl] = badgeCapEdif(c.capEdif);
-    const [bmcls, bmlbl] = badgeMail(c.mail);
-
-    const dr = document.createElement('tr');
-    dr.className = 'data-row' + (isOpen ? ' active' : '');
-    dr.innerHTML = `
-      <td><div class="cell-client">
-        <span class="chevron${isOpen?' open':''}">&#9654;</span>
-        <div><div class="client-name">${c.name}</div><div class="client-meta">${c.totalEmp} emp${c.fecha ? ' · ' + c.fecha : ''}</div></div>
-      </div></td>
-      <td class="cell-pct" style="color:${pctColor(c.pct)}">${c.pct}%</td>
-      <td class="cell-badge"><span class="badge ${bcls}">${blbl}</span></td>
-      <td class="cell-badge"><span class="badge ${brcls}">${brlbl}</span></td>
-      <td class="cell-inst">
-        <div class="segs">
-          ${[c.cableado, c.colocacion, c.config_pm].map(v => `<div class="seg"><div class="seg-fill" style="width:${v}%;background:${segFill(v, instColor)}"></div></div>`).join('')}
-        </div>
-        <div class="inst-pct" style="color:${instPctColor}">${c.instAvg}%</div>
-      </td>
-      <td class="cell-badge"><span class="badge ${becls}">${belbl}</span></td>
-      <td class="cell-badge"><span class="badge ${bmcls}">${bmlbl}</span></td>
-      <td class="cell-cap">
-        <div class="cap-frac">${c.capN}/${c.totalEmp}</div>
-        <div class="cap-bar"><div class="cap-fill" style="width:${c.capPct}%;background:${c.capPct===100?'var(--green)':'var(--amber)'}"></div></div>
-      </td>`;
-    dr.addEventListener('click', () => {
-      openId = isOpen ? null : c.id;
-      renderTable(clients);
-    });
+function renderTable(data){
+  if(!data.length){document.getElementById('tbl-container').innerHTML='<div class="state-box"><span>No hay clientes cargados todavía.</span></div>';return}
+  const tbody=document.createElement('tbody');
+  data.forEach(c=>{
+    const isOpen=openId===c.id, ib=instBase(c.instAvg);
+    const [bc,bl]=bContrato(c.contrato),[rc,rl]=bBrief(c.brief),[ec,el]=bCapEdif(c.capEdif),[mc,ml]=bMail(c.mail);
+    const dr=document.createElement('tr');
+    dr.className='dr'+(isOpen?' active':'');
+    dr.innerHTML=`
+      <td><div class="cc"><span class="chev${isOpen?' open':''}">&#9654;</span><div><div class="cn">${c.name}</div><div class="cm">${c.totalEmp} emp${c.fecha?' · '+c.fecha:''}</div></div></div></td>
+      <td class="cp" style="color:${pctColor(c.pct)}">${c.pct}%</td>
+      <td class="cb"><span class="badge ${bc}">${bl}</span></td>
+      <td class="cb"><span class="badge ${rc}">${rl}</span></td>
+      <td class="ci"><div class="segs">${[c.cableado,c.coloc,c.config].map(v=>`<div class="seg"><div class="segf" style="width:${v}%;background:${segCol(v,ib)}"></div></div>`).join('')}</div><div class="ipct" style="color:${instPctCol(c.instAvg)}">${c.instAvg}%</div></td>
+      <td class="cb"><span class="badge ${ec}">${el}</span></td>
+      <td class="cb"><span class="badge ${mc}">${ml}</span></td>
+      <td class="ccap"><div class="cfrac">${c.capN}/${c.totalEmp}</div><div class="cbar"><div class="cbarf" style="width:${c.capPct}%;background:${c.capPct===100?'var(--green)':'var(--amber)'}"></div></div></td>
+      <td class="cadh"><div class="adhpct">${c.adhPct}%</div><div class="adhfrac">${c.empAdh}/${c.empTot}</div><div class="adhbar"><div class="adhbarf" style="width:${c.adhPct}%"></div></div></td>`;
+    dr.addEventListener('click',()=>{openId=isOpen?null:c.id;renderTable(clients)});
     tbody.appendChild(dr);
-
-    if (isOpen) {
-      const detailTr = document.createElement('tr');
-      detailTr.className = 'detail-row';
-      detailTr.innerHTML = renderDetail(c);
-      tbody.appendChild(detailTr);
-    }
+    if(isOpen){const xr=document.createElement('tr');xr.className='xr';xr.innerHTML=renderDetail(c);tbody.appendChild(xr)}
   });
-
-  const table = document.createElement('table');
-  table.innerHTML = `<colgroup>
-    <col style="width:160px"><col style="width:52px"><col style="width:80px"><col style="width:80px">
-    <col style="width:100px"><col style="width:90px"><col style="width:70px"><col style="width:80px">
-  </colgroup>
-  <thead><tr>
-    <th>Cliente</th>
-    <th style="text-align:right">Avance</th>
-    <th class="center">Contrato</th>
-    <th class="center">Brief</th>
-    <th class="center">Instalación física</th>
-    <th class="center">Cap. edificio</th>
-    <th class="center">Mail</th>
-    <th class="center">Cap. empresas</th>
-  </tr></thead>`;
-  table.appendChild(tbody);
-
-  document.getElementById('tbl-container').innerHTML = '';
-  document.getElementById('tbl-container').appendChild(table);
-  document.getElementById('legend').style.display = 'flex';
+  const tbl=document.createElement('table');
+  tbl.innerHTML=`<colgroup><col style="width:150px"><col style="width:50px"><col style="width:76px"><col style="width:76px"><col style="width:94px"><col style="width:82px"><col style="width:64px"><col style="width:72px"><col style="width:80px"></colgroup>
+  <thead><tr><th>Cliente</th><th style="text-align:right">Avance</th><th class="c">Contrato</th><th class="c">Brief</th><th class="c">Instalación física</th><th class="c">Cap. edificio</th><th class="c">Mail</th><th class="c">Cap. emp.</th><th class="c">Adherencia</th></tr></thead>`;
+  tbl.appendChild(tbody);
+  document.getElementById('tbl-container').innerHTML='';
+  document.getElementById('tbl-container').appendChild(tbl);
+  document.getElementById('legend').style.display='flex';
 }
 
-async function loadData() {
-  document.getElementById('tbl-container').innerHTML = '<div class="state-box"><div class="spinner"></div><span>Cargando datos...</span></div>';
-  try {
-    const res = await fetch(CSV_URL);
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    const text = await res.text();
-    clients = parseCSV(text);
-    openId = null;
+function renderCards(data){
+  const grid=document.getElementById('cards-grid');
+  grid.innerHTML='';
+  data.forEach(c=>{
+    const ib=instBase(c.instAvg);
+    const div=document.createElement('div');
+    div.className='card';
+    div.innerHTML=`
+      <div class="card-header">
+        <div><div class="card-name">${c.name}</div><div class="card-meta">${c.totalEmp} emp${c.fecha?' · desde '+c.fecha:''}</div></div>
+        <span class="badge chip ${chipCls(c.pct)}">${c.pct}%</span>
+      </div>
+      <div class="card-bar"><div class="card-bar-fill" style="width:${c.pct}%;background:${pctBarColor(c.pct)}"></div></div>
+      <div class="card-steps">
+        <div class="csr"><div class="csdot" style="background:${c.contrato==='Firmado'?'var(--green)':c.contrato==='En revisión'?'var(--blue)':'var(--border-strong)'}"></div><span class="csname">Contrato</span><span class="csval">${c.contrato||'—'}</span></div>
+        <div class="csr"><div class="csdot" style="background:${c.brief==='Realizado'?'var(--green)':'var(--border-strong)'}"></div><span class="csname">Brief</span><span class="csval">${c.brief||'—'}</span></div>
+        <div class="csr"><div class="csdot" style="background:${segCol(c.instAvg,ib)}"></div><span class="csname">Instalación física</span><div class="cs-mbar"><div class="cs-mbar-f" style="width:${c.instAvg}%;background:${segCol(c.instAvg,ib)}"></div></div><span class="csval">${c.instAvg}%</span></div>
+        <div class="csr"><div class="csdot" style="background:${c.capEdif==='Realizada'?'var(--green)':c.capEdif==='Agendada'?'var(--amber)':'var(--border-strong)'}"></div><span class="csname">Cap. admin edificio</span><span class="csval">${c.capEdif||'—'}</span></div>
+        <div class="csr"><div class="csdot" style="background:${c.mail==='Enviado'?'var(--green)':'var(--border-strong)'}"></div><span class="csname">Mail inicial</span><span class="csval">${c.mail||'—'}</span></div>
+        <div class="csr"><div class="csdot" style="background:${c.capPct===100?'var(--green)':c.capPct>0?'var(--amber)':'var(--border-strong)'}"></div><span class="csname">Cap. empresas</span><span class="csval">${c.capN}/${c.totalEmp}</span></div>
+      </div>
+      ${c.empTot>0?`<div class="card-adh"><span class="card-adh-label">Adherencia empleados</span><span class="card-adh-val">${c.empAdh}/${c.empTot} · ${c.adhPct}%</span></div>`:''}`;
+    grid.appendChild(div);
+  });
+}
+
+function toggleCards(){
+  cardsOpen=!cardsOpen;
+  document.getElementById('cards-section').style.display=cardsOpen?'block':'none';
+  document.getElementById('cards-icon').classList.toggle('open',cardsOpen);
+  if(cardsOpen&&clients.length) renderCards(clients);
+}
+
+async function loadData(){
+  document.getElementById('tbl-container').innerHTML='<div class="state-box"><div class="spinner"></div><span>Cargando datos...</span></div>';
+  try{
+    const res=await fetch(CSV_URL);
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    const text=await res.text();
+    clients=parseCSV(text);
+    openId=null;
     renderMetrics(clients);
     renderTable(clients);
-    const now = new Date();
-    document.getElementById('last-update').textContent = 'Actualizado ' + now.toLocaleTimeString('es-AR', {hour:'2-digit',minute:'2-digit'});
-  } catch(e) {
-    document.getElementById('tbl-container').innerHTML = `<div class="state-box"><span class="error-msg">No se pudo cargar el sheet.<br><small>${e.message}</small></span></div>`;
+    if(cardsOpen) renderCards(clients);
+    const now=new Date();
+    document.getElementById('last-update').textContent='Actualizado '+now.toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'});
+  }catch(e){
+    document.getElementById('tbl-container').innerHTML=`<div class="state-box"><span class="error-msg">No se pudo cargar el sheet.<br><small>${e.message}</small></span></div>`;
   }
 }
 
